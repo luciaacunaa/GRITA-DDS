@@ -1,54 +1,10 @@
+import useItem from "@/hooks/use-itemLista";
 import BarraAgregado from "@/src/componentes/barraAgregado";
 import Titulo from "@/src/componentes/titulo";
-import { useState } from "react";
-import { FlatList, Pressable, StyleSheet, Text, View } from "react-native";
-
-type Item = {
-  id: string;
-  nombre: string;
-  hecho: boolean;
-};
+import { FlatList, StyleSheet, Text, View } from "react-native";
 
 export default function App() {
-  const [items, setItems] = useState<Item[]>([]);
-
-  const agregarItem = () => {
-    const trimmed = text.trim();
-    if (!trimmed) return;
-    setItems((prev) => [
-      ...prev,
-      { id: String(Date.now()), nombre: trimmed, hecho: false },
-    ]);
-    setText("");
-  };
-
-  const toggleItem = (id: string) => {
-    setItems((prev) =>
-      prev.map((it) => (it.id === id ? { ...it, hecho: !it.hecho } : it)),
-    );
-  };
-
-  const removeItem = (id: string) => {
-    setItems((prev) => prev.filter((it) => it.id !== id));
-  };
-
-  const renderItem = ({ item }: { item: Item }) => (
-    <Pressable
-      onPress={() => toggleItem(item.id)}
-      onLongPress={() => removeItem(item.id)}
-      style={styles.row}
-    >
-      <Text style={[styles.rowText, item.hecho && styles.done]}>
-        {item.nombre}
-      </Text>
-
-      <Text
-        style={[styles.pill, item.hecho ? styles.pillDone : styles.pillTodo]}
-      >
-        {item.hecho ? "✔" : "•"}
-      </Text>
-    </Pressable>
-  );
+  const { items, renderItem, agregarItem } = useItem();
 
   return (
     <View style={styles.container}>

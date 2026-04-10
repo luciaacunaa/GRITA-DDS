@@ -1,8 +1,6 @@
-import { StyleSheet, Text } from "react-native";
-const Titulo = () => {
-  return <Text style={styles.title}>🛒 Lista de Compras</Text>;
-};
-const styles = StyleSheet.create({
+import { StyleSheet } from "react-native";
+
+export const styles = StyleSheet.create({
   container: { flex: 1, padding: 16, gap: 12, backgroundColor: "#fff" },
   title: { fontSize: 24, fontWeight: "bold", marginTop: 12 },
   inputRow: { flexDirection: "row", gap: 8 },
@@ -44,4 +42,3 @@ const styles = StyleSheet.create({
   sep: { height: 1, backgroundColor: "#eee" },
   empty: { textAlign: "center", color: "#777", marginTop: 24 },
 });
-export default Titulo;
